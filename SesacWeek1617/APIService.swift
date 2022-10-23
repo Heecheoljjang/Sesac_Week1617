@@ -30,4 +30,21 @@ class APIService {
         }
     }
     
+    static func requestRandomPhoto(completion: @escaping (RandomPhoto?) -> Void) {
+        let url = APIKey.randomPhotoURL
+        let header: HTTPHeaders = ["Authorization": APIKey.authorization]
+        
+        AF.request(url, method: .get, headers: header).responseDecodable(of: RandomPhoto.self) { response in
+            let statusCode = response.response?.statusCode
+            
+            switch response.result {
+            case .success(let value):
+                print(value)
+                completion(value)
+            case .failure(let error):
+                print(error)
+                completion(nil)
+            }
+        }
+    }
 }

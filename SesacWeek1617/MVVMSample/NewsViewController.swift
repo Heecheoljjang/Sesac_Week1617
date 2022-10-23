@@ -89,7 +89,6 @@ extension NewsViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
-        
     }
     
     func createLayout() -> UICollectionViewLayout{

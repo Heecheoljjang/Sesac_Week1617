@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97AF2889290586360020C054 /* RandomPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF2888290586360020C054 /* RandomPhoto.swift */; };
+		97AF288B290586440020C054 /* RandomPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF288A290586440020C054 /* RandomPhotoViewModel.swift */; };
+		97AF288D2905864D0020C054 /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF288C2905864D0020C054 /* RandomPhotoViewController.swift */; };
+		97AF288F2905865E0020C054 /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF288E2905865E0020C054 /* RandomPhotoView.swift */; };
+		97AF2892290589900020C054 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 97AF2891290589900020C054 /* SnapKit */; };
 		97BF592D2900CF860019681C /* CObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BF592C2900CF860019681C /* CObservable.swift */; };
 		97BF592F2900D1390019681C /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BF592E2900D1390019681C /* NewsViewController.swift */; };
 		97BF59312900D2500019681C /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BF59302900D2500019681C /* NewsViewModel.swift */; };
@@ -28,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97AF2888290586360020C054 /* RandomPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhoto.swift; sourceTree = "<group>"; };
+		97AF288A290586440020C054 /* RandomPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewModel.swift; sourceTree = "<group>"; };
+		97AF288C2905864D0020C054 /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
+		97AF288E2905865E0020C054 /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
 		97BF592C2900CF860019681C /* CObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CObservable.swift; sourceTree = "<group>"; };
 		97BF592E2900D1390019681C /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		97BF59302900D2500019681C /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
@@ -53,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97AF2892290589900020C054 /* SnapKit in Frameworks */,
 				97BF59412900F10C0019681C /* Kingfisher in Frameworks */,
 				97BF593E2900F1010019681C /* Alamofire in Frameworks */,
 			);
@@ -61,6 +71,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97AF28862905856E0020C054 /* Unsplash */ = {
+			isa = PBXGroup;
+			children = (
+				97AF2887290585840020C054 /* RandomPhoto */,
+			);
+			path = Unsplash;
+			sourceTree = "<group>";
+		};
+		97AF2887290585840020C054 /* RandomPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				97AF2888290586360020C054 /* RandomPhoto.swift */,
+				97AF288A290586440020C054 /* RandomPhotoViewModel.swift */,
+				97AF288C2905864D0020C054 /* RandomPhotoViewController.swift */,
+				97AF288E2905865E0020C054 /* RandomPhotoView.swift */,
+			);
+			path = RandomPhoto;
+			sourceTree = "<group>";
+		};
 		97BF592B2900CD7E0019681C /* MVVMSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +120,7 @@
 		97CD325128FE2E7A0087A07E /* SesacWeek1617 */ = {
 			isa = PBXGroup;
 			children = (
+				97AF28862905856E0020C054 /* Unsplash */,
 				97BF592B2900CD7E0019681C /* MVVMSample */,
 				97CD325228FE2E7A0087A07E /* AppDelegate.swift */,
 				97CD325428FE2E7A0087A07E /* SceneDelegate.swift */,
@@ -128,6 +158,7 @@
 			packageProductDependencies = (
 				97BF593D2900F1010019681C /* Alamofire */,
 				97BF59402900F10C0019681C /* Kingfisher */,
+				97AF2891290589900020C054 /* SnapKit */,
 			);
 			productName = SesacWeek1617;
 			productReference = 97CD324F28FE2E7A0087A07E /* SesacWeek1617.app */;
@@ -160,6 +191,7 @@
 			packageReferences = (
 				97BF593C2900F1010019681C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				97BF593F2900F10C0019681C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				97AF2890290589900020C054 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 97CD325028FE2E7A0087A07E /* Products */;
 			projectDirPath = "";
@@ -192,13 +224,17 @@
 				97CD327528FF90800087A07E /* DiffableCollectionViewController.swift in Sources */,
 				97CD326728FE39090087A07E /* SimpleCollectionViewController.swift in Sources */,
 				97BF59332900D77F0019681C /* News.swift in Sources */,
+				97AF288D2905864D0020C054 /* RandomPhotoViewController.swift in Sources */,
 				97BF59372900EDED0019681C /* APIService.swift in Sources */,
 				97CD325728FE2E7A0087A07E /* SimpleTableViewController.swift in Sources */,
+				97AF288F2905865E0020C054 /* RandomPhotoView.swift in Sources */,
 				97BF592F2900D1390019681C /* NewsViewController.swift in Sources */,
 				97CD325328FE2E7A0087A07E /* AppDelegate.swift in Sources */,
 				97BF593B2900EF850019681C /* SearchPhoto.swift in Sources */,
 				97CD325528FE2E7A0087A07E /* SceneDelegate.swift in Sources */,
+				97AF288B290586440020C054 /* RandomPhotoViewModel.swift in Sources */,
 				97BF59312900D2500019681C /* NewsViewModel.swift in Sources */,
+				97AF2889290586360020C054 /* RandomPhoto.swift in Sources */,
 				97BF59392900EE440019681C /* APIKey.swift in Sources */,
 				97BF59352900ED670019681C /* DiffableViewModel.swift in Sources */,
 			);
@@ -352,7 +388,6 @@
 				INFOPLIST_FILE = SesacWeek1617/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -380,7 +415,6 @@
 				INFOPLIST_FILE = SesacWeek1617/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -420,6 +454,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		97AF2890290589900020C054 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		97BF593C2900F1010019681C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -439,6 +481,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		97AF2891290589900020C054 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97AF2890290589900020C054 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		97BF593D2900F1010019681C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 97BF593C2900F1010019681C /* XCRemoteSwiftPackageReference "Alamofire" */;
