@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		976F0F7D2906DCE00057BF54 /* SimpleTableViewExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F0F7C2906DCE00057BF54 /* SimpleTableViewExampleController.swift */; };
+		976F0F7F2906DCEA0057BF54 /* SimpleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F0F7E2906DCEA0057BF54 /* SimpleTableView.swift */; };
 		9783B147290622BF00620D92 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9783B146290622BF00620D92 /* RxCocoa */; };
 		9783B149290622BF00620D92 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9783B148290622BF00620D92 /* RxSwift */; };
 		9783B14B290625D300620D92 /* RXCocoaExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9783B14A290625D300620D92 /* RXCocoaExampleViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		976F0F7C2906DCE00057BF54 /* SimpleTableViewExampleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewExampleController.swift; sourceTree = "<group>"; };
+		976F0F7E2906DCEA0057BF54 /* SimpleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableView.swift; sourceTree = "<group>"; };
 		9783B14A290625D300620D92 /* RXCocoaExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXCocoaExampleViewController.swift; sourceTree = "<group>"; };
 		9783B16C2906856300620D92 /* SimplePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewController.swift; sourceTree = "<group>"; };
 		9783B16F2906873A00620D92 /* SimpletPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpletPickerView.swift; sourceTree = "<group>"; };
@@ -116,11 +120,13 @@
 			path = SimpleValidationViewController;
 			sourceTree = "<group>";
 		};
-		9783B17B2906DC3100620D92 /* New Group */ = {
+		9783B17B2906DC3100620D92 /* SimpleTableViewExampleViewController */ = {
 			isa = PBXGroup;
 			children = (
+				976F0F7C2906DCE00057BF54 /* SimpleTableViewExampleController.swift */,
+				976F0F7E2906DCEA0057BF54 /* SimpleTableView.swift */,
 			);
-			path = "New Group";
+			path = SimpleTableViewExampleViewController;
 			sourceTree = "<group>";
 		};
 		97AF28862905856E0020C054 /* Unsplash */ = {
@@ -172,7 +178,6 @@
 		97CD325128FE2E7A0087A07E /* SesacWeek1617 */ = {
 			isa = PBXGroup;
 			children = (
-				9783B17B2906DC3100620D92 /* New Group */,
 				97AF28862905856E0020C054 /* Unsplash */,
 				97BF592B2900CD7E0019681C /* MVVMSample */,
 				97CD325228FE2E7A0087A07E /* AppDelegate.swift */,
@@ -189,6 +194,7 @@
 				97BF59382900EE440019681C /* APIKey.swift */,
 				97BF593A2900EF850019681C /* SearchPhoto.swift */,
 				9783B14A290625D300620D92 /* RXCocoaExampleViewController.swift */,
+				9783B17B2906DC3100620D92 /* SimpleTableViewExampleViewController */,
 				9783B1762906B59400620D92 /* SimpleValidationViewController */,
 				9783B1712906AAD300620D92 /* NumbersViewController */,
 				9783B16E2906856700620D92 /* SimplePickerViewController */,
@@ -293,6 +299,7 @@
 				97BF592F2900D1390019681C /* NewsViewController.swift in Sources */,
 				97CD325328FE2E7A0087A07E /* AppDelegate.swift in Sources */,
 				97BF593B2900EF850019681C /* SearchPhoto.swift in Sources */,
+				976F0F7F2906DCEA0057BF54 /* SimpleTableView.swift in Sources */,
 				97CD325528FE2E7A0087A07E /* SceneDelegate.swift in Sources */,
 				97AF288B290586440020C054 /* RandomPhotoViewModel.swift in Sources */,
 				97BF59312900D2500019681C /* NewsViewModel.swift in Sources */,
@@ -302,6 +309,7 @@
 				9783B1732906AB2600620D92 /* NumbersViewController.swift in Sources */,
 				97BF59352900ED670019681C /* DiffableViewModel.swift in Sources */,
 				9783B17A2906B5D200620D92 /* SimpleValidationView.swift in Sources */,
+				976F0F7D2906DCE00057BF54 /* SimpleTableViewExampleController.swift in Sources */,
 				9783B1782906B5B700620D92 /* SimpleValidationViewController.swift in Sources */,
 				9783B14B290625D300620D92 /* RXCocoaExampleViewController.swift in Sources */,
 			);
