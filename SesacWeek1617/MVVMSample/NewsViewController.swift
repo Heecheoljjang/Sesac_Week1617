@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class NewsViewController: UIViewController {
     
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var loadButton: UIButton!
     
     var viewModel = NewsViewModel()
     
+    let disposeBag = DisposeBag()
+    
     var dataSource: UICollectionViewDiffableDataSource<Int, News.NewsItem>!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var loadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,48 +29,82 @@ class NewsViewController: UIViewController {
         configureHierarchy()
         configreDataSource()
         
-        numberTextFieldChanged()
+        //numberTextFieldChanged()
         
         bindData()
         
-        configureViews()
+        //configureViews()
         
     }
     
     func bindData() {
         //numberTextField.text = "3000"
-        viewModel.pageNumber.bind { [weak self] value in
-            self?.numberTextField.text = value
-        }
+//        viewModel.pageNumber.bind { [weak self] value in
+//            self?.numberTextField.text = value
+//        }
+        viewModel.pageNumber
+            .bind(to: numberTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        numberTextField.rx.text.orEmpty
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.changePageNumberFormat(text: value)
+            })
+            .disposed(by: disposeBag)
+        
         //데이터가 추가돼도 실행, 없어져도 실행
-        viewModel.sample.bind { [weak self] item in
-            var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
-            snapshot.appendSections([0])
-            snapshot.appendItems(item)
-            self?.dataSource.apply(snapshot, animatingDifferences: false)
-        }
+//        viewModel.sample.bind { [weak self] item in
+//            var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
+//            snapshot.appendSections([0])
+//            snapshot.appendItems(item)
+//            self?.dataSource.apply(snapshot, animatingDifferences: false)
+//        }
+        viewModel.sampleNewsList
+            .subscribe(onNext: { [weak self] item in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
+                snapshot.appendSections([0])
+                snapshot.appendItems(item)
+                self?.dataSource.apply(snapshot, animatingDifferences: false)
+            })
+            .disposed(by: disposeBag)
+        
+        
+        //MARK: 버튼
+        
+        resetButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { (vc ,_) in
+                vc.viewModel.resetSample()
+            })
+            .disposed(by: disposeBag)
+        
+        loadButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.loadSample()
+            })
+            .disposed(by: disposeBag)
         
     }
     
-    func configureViews() {
-        numberTextField.addTarget(self, action: #selector(numberTextFieldChanged), for: .editingChanged)
-        resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
-        loadButton.addTarget(self, action: #selector(loadButtonTapped), for: .touchUpInside)
-        
-    }
+//    func configureViews() {
+//        numberTextField.addTarget(self, action: #selector(numberTextFieldChanged), for: .editingChanged)
+//        resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+//        loadButton.addTarget(self, action: #selector(loadButtonTapped), for: .touchUpInside)
+//
+//    }
     
-    @objc private func numberTextFieldChanged() {
-        guard let text = numberTextField.text else { return }
-        viewModel.changePageNumberFormat(text: text)
-    }
-    @objc private func resetButtonTapped() {
-        print("123")
-        viewModel.resetSample()
-    }
-    @objc private func loadButtonTapped() {
-        print("34")
-        viewModel.loadSample()
-    }
+//    @objc private func numberTextFieldChanged() {
+//        guard let text = numberTextField.text else { return }
+//        viewModel.changePageNumberFormat(text: text)
+//    }
+//    @objc private func resetButtonTapped() {
+//        print("123")
+//        viewModel.resetSample()
+//    }
+//    @objc private func loadButtonTapped() {
+//        print("34")
+//        viewModel.loadSample()
+//    }
 }
 
 extension NewsViewController {
