@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		970C651E29077A3F0006C9EA /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970C651D29077A3F0006C9EA /* SubjectViewController.swift */; };
+		970C6520290788AA0006C9EA /* SubjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970C651F290788AA0006C9EA /* SubjectViewModel.swift */; };
 		976F0F7D2906DCE00057BF54 /* SimpleTableViewExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F0F7C2906DCE00057BF54 /* SimpleTableViewExampleController.swift */; };
 		976F0F7F2906DCEA0057BF54 /* SimpleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976F0F7E2906DCEA0057BF54 /* SimpleTableView.swift */; };
 		9783B147290622BF00620D92 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9783B146290622BF00620D92 /* RxCocoa */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		970C651D29077A3F0006C9EA /* SubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
+		970C651F290788AA0006C9EA /* SubjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewModel.swift; sourceTree = "<group>"; };
 		976F0F7C2906DCE00057BF54 /* SimpleTableViewExampleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewExampleController.swift; sourceTree = "<group>"; };
 		976F0F7E2906DCEA0057BF54 /* SimpleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableView.swift; sourceTree = "<group>"; };
 		9783B14A290625D300620D92 /* RXCocoaExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXCocoaExampleViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				97BF59382900EE440019681C /* APIKey.swift */,
 				97BF593A2900EF850019681C /* SearchPhoto.swift */,
 				9783B14A290625D300620D92 /* RXCocoaExampleViewController.swift */,
+				970C651D29077A3F0006C9EA /* SubjectViewController.swift */,
+				970C651F290788AA0006C9EA /* SubjectViewModel.swift */,
 				9783B17B2906DC3100620D92 /* SimpleTableViewExampleViewController */,
 				9783B1762906B59400620D92 /* SimpleValidationViewController */,
 				9783B1712906AAD300620D92 /* NumbersViewController */,
@@ -305,7 +311,9 @@
 				97BF59312900D2500019681C /* NewsViewModel.swift in Sources */,
 				97AF2889290586360020C054 /* RandomPhoto.swift in Sources */,
 				97BF59392900EE440019681C /* APIKey.swift in Sources */,
+				970C651E29077A3F0006C9EA /* SubjectViewController.swift in Sources */,
 				9783B1702906873A00620D92 /* SimpletPickerView.swift in Sources */,
+				970C6520290788AA0006C9EA /* SubjectViewModel.swift in Sources */,
 				9783B1732906AB2600620D92 /* NumbersViewController.swift in Sources */,
 				97BF59352900ED670019681C /* DiffableViewModel.swift in Sources */,
 				9783B17A2906B5D200620D92 /* SimpleValidationView.swift in Sources */,

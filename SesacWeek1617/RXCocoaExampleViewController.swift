@@ -18,18 +18,33 @@ class RXCocoaExampleViewController: UIViewController {
     @IBOutlet weak var signName: UITextField!
     @IBOutlet weak var signEmail: UITextField!
     @IBOutlet weak var signButton: UIButton!
+    @IBOutlet weak var nicknameLabel: UILabel!
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
+    
+    var nickname = Observable.just("hee")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setTableView()
-//        setPickerView()
-//        setSwitch()
-//        setSign()
-//        setOperator()
-        defferedTest()
+        nickname
+            .bind(to: nicknameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            self.nickname = "123"
+//        }
+        
+        setTableView()
+        setPickerView()
+        setSwitch()
+        setSign()
+        setOperator()
+//        defferedTest()
+    }
+    
+    deinit {
+        print("rxcocoa deinit")
     }
     
     func defferedTest() {
@@ -87,9 +102,9 @@ class RXCocoaExampleViewController: UIViewController {
                 print("repeat disposed")
             }
             .disposed(by: disposeBag)
-        
+
         //화면전환돼도 얘는 계속 살아있기떄문에 수동으로 dispose가 동작하게 해야함. complete나 error가 뜨면 자동으로 호출되는데 안뜨면 수동으로해야함
-        let intervalOb = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
+        Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe { value in
                 print("interval - \(value)")
             } onError: { error in
@@ -99,12 +114,12 @@ class RXCocoaExampleViewController: UIViewController {
             } onDisposed: {
                 print("interval disposed")
             }
-            //.disposed(by: disposeBag)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            intervalOb.dispose()
-        }
-        
+            .disposed(by: disposeBag)
+
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//            self.disposeBag = DisposeBag() //새롭게 할당되면서 기존의 리소스 해제됨. 한 번에 리소스 정리
+//        }
+
         let itemsA = [3.3, 4.0, 5.0, 2.0, 3.6, 4.8]
         let itemsB = [2.3, 2.0, 1.3]
         
@@ -164,8 +179,8 @@ class RXCocoaExampleViewController: UIViewController {
             .disposed(by: disposeBag)
         
         signButton.rx.tap //tap은 touchupinside라고 생각
-            .subscribe { _ in //bind가 아닌이유는 탭이라고 호출하면 컨트롤이벤트가 Void라서 bind해줄만한건 따로없음. 즉, 데이터 스트림을 바꾸지않는이상 bind를 해주지않음
-                self.showAlert()
+            .subscribe { [weak self] _ in //bind가 아닌이유는 탭이라고 호출하면 컨트롤이벤트가 Void라서 bind해줄만한건 따로없음. 즉, 데이터 스트림을 바꾸지않는이상 bind를 해주지않음
+                self?.showAlert()
             }
             .disposed(by: disposeBag)
     }
