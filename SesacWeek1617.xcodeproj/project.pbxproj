@@ -20,6 +20,7 @@
 		9783B1752906AB6C00620D92 /* NumbersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9783B1742906AB6C00620D92 /* NumbersView.swift */; };
 		9783B1782906B5B700620D92 /* SimpleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9783B1772906B5B700620D92 /* SimpleValidationViewController.swift */; };
 		9783B17A2906B5D200620D92 /* SimpleValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9783B1792906B5D200620D92 /* SimpleValidationView.swift */; };
+		979E70CE2908CBBE00613F1B /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E70CD2908CBBE00613F1B /* SubscribeViewController.swift */; };
 		97AF2889290586360020C054 /* RandomPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF2888290586360020C054 /* RandomPhoto.swift */; };
 		97AF288B290586440020C054 /* RandomPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF288A290586440020C054 /* RandomPhotoViewModel.swift */; };
 		97AF288D2905864D0020C054 /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF288C2905864D0020C054 /* RandomPhotoViewController.swift */; };
@@ -57,6 +58,7 @@
 		9783B1742906AB6C00620D92 /* NumbersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersView.swift; sourceTree = "<group>"; };
 		9783B1772906B5B700620D92 /* SimpleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationViewController.swift; sourceTree = "<group>"; };
 		9783B1792906B5D200620D92 /* SimpleValidationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationView.swift; sourceTree = "<group>"; };
+		979E70CD2908CBBE00613F1B /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
 		97AF2888290586360020C054 /* RandomPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhoto.swift; sourceTree = "<group>"; };
 		97AF288A290586440020C054 /* RandomPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewModel.swift; sourceTree = "<group>"; };
 		97AF288C2905864D0020C054 /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				9783B1762906B59400620D92 /* SimpleValidationViewController */,
 				9783B1712906AAD300620D92 /* NumbersViewController */,
 				9783B16E2906856700620D92 /* SimplePickerViewController */,
+				979E70CD2908CBBE00613F1B /* SubscribeViewController.swift */,
 			);
 			path = SesacWeek1617;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				97BF593B2900EF850019681C /* SearchPhoto.swift in Sources */,
 				976F0F7F2906DCEA0057BF54 /* SimpleTableView.swift in Sources */,
 				97CD325528FE2E7A0087A07E /* SceneDelegate.swift in Sources */,
+				979E70CE2908CBBE00613F1B /* SubscribeViewController.swift in Sources */,
 				97AF288B290586440020C054 /* RandomPhotoViewModel.swift in Sources */,
 				97BF59312900D2500019681C /* NewsViewModel.swift in Sources */,
 				97AF2889290586360020C054 /* RandomPhoto.swift in Sources */,

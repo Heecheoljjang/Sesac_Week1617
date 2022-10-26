@@ -18,8 +18,9 @@ class NewsViewModel {
   
     var pageNumber = BehaviorSubject(value: "10000")
     
-    var sampleNewsList = PublishSubject<[News.NewsItem]>()
+//    var sampleNewsList = BehaviorSubject(value: News.items)
 
+    var sampleNewsList = BehaviorRelay(value: News.items) //에러랑 컴플리트 없는 상황으로 만들어줌
 
     func changePageNumberFormat(text: String) {
 //        let numberFormatter = NumberFormatter()
@@ -39,11 +40,13 @@ class NewsViewModel {
 
     func resetSample() {
 //        sample.value = []
-        sampleNewsList.onNext([])
+//        sampleNewsList.onNext([]) //BehaviorSubject인 경우
+        sampleNewsList.accept([]) //Relay는 accept
     }
     
     func loadSample() {
 //        sample.value = News.items
-        sampleNewsList.onNext(News.items)
+//        sampleNewsList.onNext(News.items)
+        sampleNewsList.accept(News.items)
     }
 }

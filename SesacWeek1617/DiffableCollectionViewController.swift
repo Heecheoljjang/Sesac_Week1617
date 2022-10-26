@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 private let reuseIdentifier = "Cell"
 
@@ -18,6 +20,8 @@ class DiffableCollectionViewController: UIViewController {
     
     var viewModel = DiffableViewModel()
     
+    let disposeBag = DisposeBag()
+    
     //뒤의 string은 list의 string 데이터에 대한 정보, Int는 섹션에 대한 정보
 //    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
     private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
@@ -29,14 +33,38 @@ class DiffableCollectionViewController: UIViewController {
         collectionView.collectionViewLayout = createLayout()
         configureDataSource()
         collectionView.delegate = self //delegate는 필요
-        searchBar.delegate = self
+       // searchBar.delegate = self
         
-        viewModel.photoList.bind { [weak self] photo in
-            var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
-            snapshot.appendSections([0]) //0번 섹션애
-            snapshot.appendItems(photo.results) //list를 넣겟따
-            self?.dataSource.apply(snapshot)
-        }
+//        viewModel.photoList.bind { [weak self] photo in
+//            var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+//            snapshot.appendSections([0]) //0번 섹션애
+//            snapshot.appendItems(photo.results) //list를 넣겟따
+//            self?.dataSource.apply(snapshot)
+//        }
+        viewModel.photoList
+            .subscribe { [weak self] photo in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+                snapshot.appendSections([0]) //0번 섹션애
+                snapshot.appendItems(photo.results) //list를 넣겟따
+                self?.dataSource.apply(snapshot)
+            } onError: { error in
+                print("error - \(error)")
+            } onCompleted: {
+                print("complete")
+            } onDisposed: {
+                print("disposed")
+            }
+            .disposed(by: DisposeBag())//bindData 실행하자마자 새로운 인스턴스로 갈아끼워져서 구독해제
+        
+        searchBar.rx.text.orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] value in
+                self?.viewModel.requestSearchPhoto(query: value)
+            })
+            .disposed(by: disposeBag)
+        
+
     }
 
 }
@@ -61,7 +89,7 @@ extension DiffableCollectionViewController: UISearchBarDelegate {
 //        var snapshot = dataSource.snapshot() //기존 스냅샵을 가져옴
 //        snapshot.appendItems([searchBar.text!]) //아이템을 담아줌. 한 번에 여러 아이템도 들어갈 수 있어서 배열 형태임. 섹션은 이미 0번이 추가되어있어서 따로안씀
 //        dataSource.apply(snapshot, animatingDifferences: true)
-        viewModel.requestSearchPhoto(query: searchBar.text!)
+        //viewModel.requestSearchPhoto(query: searchBar.text!)
     }
 }
 
