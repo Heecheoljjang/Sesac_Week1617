@@ -16,7 +16,8 @@ class NewsViewModel {
 //    var sample: CObservable<[News.NewsItem]> = CObservable(News.items)
 //
   
-    var pageNumber = BehaviorSubject(value: "10000")
+    //var pageNumber = BehaviorSubject(value: "10000")
+    var pageNumber = BehaviorRelay(value: "10000")
     
 //    var sampleNewsList = BehaviorSubject(value: News.items)
 
@@ -35,7 +36,8 @@ class NewsViewModel {
         let text = text.replacingOccurrences(of: ",", with: "")
         guard let number = Int(text) else { return }
         let result = numberFormatter.string(for: number)!
-        pageNumber.onNext(result)
+//        pageNumber.onNext(result)
+        pageNumber.accept(result)
     }
 
     func resetSample() {

@@ -26,6 +26,7 @@ class SubjectViewModel {
     //var list = PublishSubject<[Contact]>()
     var list = PublishRelay<[Contact]>()
     
+    
     func fetchData() {
 //        list.onNext(contactData)
         list.accept(contactData)

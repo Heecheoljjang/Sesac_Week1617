@@ -42,10 +42,17 @@ class NewsViewController: UIViewController {
 //        viewModel.pageNumber.bind { [weak self] value in
 //            self?.numberTextField.text = value
 //        }
-        viewModel.pageNumber
-            .bind(to: numberTextField.rx.text)
-            .disposed(by: disposeBag)
+//        viewModel.pageNumber
+//            .bind(to: numberTextField.rx.text)
+//            .disposed(by: disposeBag)
         
+        viewModel.pageNumber
+            .bind(onNext: { [weak self] value in
+                print(value)
+                self?.numberTextField.text = value
+            })
+            .disposed(by: disposeBag)
+
         numberTextField.rx.text.orEmpty
             .subscribe(onNext: { [weak self] value in
                 self?.viewModel.changePageNumberFormat(text: value)

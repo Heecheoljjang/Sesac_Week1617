@@ -41,20 +41,28 @@ class DiffableCollectionViewController: UIViewController {
 //            snapshot.appendItems(photo.results) //list를 넣겟따
 //            self?.dataSource.apply(snapshot)
 //        }
+//        viewModel.photoList
+//            .subscribe { [weak self] photo in
+//                var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+//                snapshot.appendSections([0]) //0번 섹션애
+//                snapshot.appendItems(photo.results) //list를 넣겟따
+//                self?.dataSource.apply(snapshot)
+//            } onError: { error in
+//                print("error - \(error)")
+//            } onCompleted: {
+//                print("complete")
+//            } onDisposed: {
+//                print("disposed")
+//            }
+//            .disposed(by: DisposeBag())//bindData 실행하자마자 새로운 인스턴스로 갈아끼워져서 구독해제
         viewModel.photoList
-            .subscribe { [weak self] photo in
+            .bind(onNext: { [weak self] photo in
                 var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
                 snapshot.appendSections([0]) //0번 섹션애
                 snapshot.appendItems(photo.results) //list를 넣겟따
                 self?.dataSource.apply(snapshot)
-            } onError: { error in
-                print("error - \(error)")
-            } onCompleted: {
-                print("complete")
-            } onDisposed: {
-                print("disposed")
-            }
-            .disposed(by: DisposeBag())//bindData 실행하자마자 새로운 인스턴스로 갈아끼워져서 구독해제
+            })
+            .disposed(by: disposeBag)
         
         searchBar.rx.text.orEmpty
             .debounce(.seconds(1), scheduler: MainScheduler.instance)

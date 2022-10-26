@@ -29,50 +29,80 @@ class SubjectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        publishSubject()
-//        behaviorSubject()
-//        replaySubject()
-//        asyncSubject()
+        //        publishSubject()
+        //        behaviorSubject()
+        //        replaySubject()
+        //        asyncSubject()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
-        
+//
         viewModel.list
             .bind(to: tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) { (row, element, cell) in
                 cell.textLabel?.text = "\(element.name), \(element.age), \(element.number)"
             }
             .disposed(by: disposeBag)
+
+//        viewModel.list
+//            .bind(onNext: { [weak self] value in
+//                self?.tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self).
+//            })
+//            .disposed(by: disposeBag)
+//
+        
+        //        addButton.rx.tap
+        //            .withUnretained(self)
+        //            .subscribe { (vc, _) in
+        //                vc.viewModel.fetchData()
+        //            }
+        //            .disposed(by: disposeBag)
         
         addButton.rx.tap
-            .withUnretained(self)
-            .subscribe { (vc, _) in
-                vc.viewModel.fetchData()
-            }
+            .bind(onNext: { [weak self] _ in
+                self?.viewModel.fetchData()
+            })
             .disposed(by: disposeBag)
         
+        //        resetButton.rx.tap
+        //            .withUnretained(self)
+        //            .subscribe { (vc, _) in
+        //                vc.viewModel.resetData()
+        //            }
+        //            .disposed(by: disposeBag)
         resetButton.rx.tap
-            .withUnretained(self)
-            .subscribe { (vc, _) in
-                vc.viewModel.resetData()
-            }
+            .bind(onNext: { [weak self] _ in
+                self?.viewModel.resetData()
+            })
             .disposed(by: disposeBag)
         
+        //        newButton.rx.tap
+        //            .subscribe { [weak self] _ in
+        //                self?.viewModel.newData()
+        //            }
+        //            .disposed(by: disposeBag)
         newButton.rx.tap
-            .subscribe { [weak self] _ in
+            .bind(onNext: { [weak self] _ in
                 self?.viewModel.newData()
-            }
+            })
             .disposed(by: disposeBag)
         
         //딜리게이트 필요없음
         //입력할때마다 서브스크라이브가 됨
+        //        searchBar.rx.text.orEmpty
+        //            .withUnretained(self)
+        //            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance) //한글자 입력할떄마다 하는건 너무 빡셈. 네트워크 통신같은경우엔 콜수 너무 많아지므로 입력하고 1초뒤에 검색하도록 해줌. 타자입력하고 잠시 뒤에 호출하도록. 입력 끝나고 1초
+        ////            .distinctUntilChanged() //같은 값을 받지 않는 오퍼레이터.
+        //            .subscribe { (vc, value) in
+        //                print("구독구독")
+        //                vc.viewModel.filterData(query: value)
+        //            }
+        //            .disposed(by: disposeBag)
         searchBar.rx.text.orEmpty
-            .withUnretained(self)
-            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance) //한글자 입력할떄마다 하는건 너무 빡셈. 네트워크 통신같은경우엔 콜수 너무 많아지므로 입력하고 1초뒤에 검색하도록 해줌. 타자입력하고 잠시 뒤에 호출하도록. 입력 끝나고 1초
-//            .distinctUntilChanged() //같은 값을 받지 않는 오퍼레이터.
-            .subscribe { (vc, value) in
-                print("구독구독")
-                vc.viewModel.filterData(query: value)
-            }
+            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] value in
+                self?.viewModel.filterData(query: value)
+            })
             .disposed(by: disposeBag)
+        
     }
     
 
