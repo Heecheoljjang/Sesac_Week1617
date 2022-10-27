@@ -21,6 +21,8 @@
 		9783B1782906B5B700620D92 /* SimpleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9783B1772906B5B700620D92 /* SimpleValidationViewController.swift */; };
 		9783B17A2906B5D200620D92 /* SimpleValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9783B1792906B5D200620D92 /* SimpleValidationView.swift */; };
 		979E70CE2908CBBE00613F1B /* SubscribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E70CD2908CBBE00613F1B /* SubscribeViewController.swift */; };
+		979E70D7290A07B000613F1B /* ValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E70D6290A07B000613F1B /* ValidationViewController.swift */; };
+		979E70D9290A22C400613F1B /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979E70D8290A22C400613F1B /* ValidationViewModel.swift */; };
 		97AF2889290586360020C054 /* RandomPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF2888290586360020C054 /* RandomPhoto.swift */; };
 		97AF288B290586440020C054 /* RandomPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF288A290586440020C054 /* RandomPhotoViewModel.swift */; };
 		97AF288D2905864D0020C054 /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF288C2905864D0020C054 /* RandomPhotoViewController.swift */; };
@@ -59,6 +61,8 @@
 		9783B1772906B5B700620D92 /* SimpleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationViewController.swift; sourceTree = "<group>"; };
 		9783B1792906B5D200620D92 /* SimpleValidationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationView.swift; sourceTree = "<group>"; };
 		979E70CD2908CBBE00613F1B /* SubscribeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeViewController.swift; sourceTree = "<group>"; };
+		979E70D6290A07B000613F1B /* ValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewController.swift; sourceTree = "<group>"; };
+		979E70D8290A22C400613F1B /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
 		97AF2888290586360020C054 /* RandomPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhoto.swift; sourceTree = "<group>"; };
 		97AF288A290586440020C054 /* RandomPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewModel.swift; sourceTree = "<group>"; };
 		97AF288C2905864D0020C054 /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				9783B1712906AAD300620D92 /* NumbersViewController */,
 				9783B16E2906856700620D92 /* SimplePickerViewController */,
 				979E70CD2908CBBE00613F1B /* SubscribeViewController.swift */,
+				979E70D6290A07B000613F1B /* ValidationViewController.swift */,
+				979E70D8290A22C400613F1B /* ValidationViewModel.swift */,
 			);
 			path = SesacWeek1617;
 			sourceTree = "<group>";
@@ -314,12 +320,14 @@
 				97AF288B290586440020C054 /* RandomPhotoViewModel.swift in Sources */,
 				97BF59312900D2500019681C /* NewsViewModel.swift in Sources */,
 				97AF2889290586360020C054 /* RandomPhoto.swift in Sources */,
+				979E70D7290A07B000613F1B /* ValidationViewController.swift in Sources */,
 				97BF59392900EE440019681C /* APIKey.swift in Sources */,
 				970C651E29077A3F0006C9EA /* SubjectViewController.swift in Sources */,
 				9783B1702906873A00620D92 /* SimpletPickerView.swift in Sources */,
 				970C6520290788AA0006C9EA /* SubjectViewModel.swift in Sources */,
 				9783B1732906AB2600620D92 /* NumbersViewController.swift in Sources */,
 				97BF59352900ED670019681C /* DiffableViewModel.swift in Sources */,
+				979E70D9290A22C400613F1B /* ValidationViewModel.swift in Sources */,
 				9783B17A2906B5D200620D92 /* SimpleValidationView.swift in Sources */,
 				976F0F7D2906DCE00057BF54 /* SimpleTableViewExampleController.swift in Sources */,
 				9783B1782906B5B700620D92 /* SimpleValidationViewController.swift in Sources */,
