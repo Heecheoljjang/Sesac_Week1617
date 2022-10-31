@@ -21,9 +21,9 @@ class ValidationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bind()
+        //bind()
         
-//        observableVSSubject()
+        observableVSSubject()
     }
     
     private func bind() {
@@ -63,21 +63,17 @@ class ValidationViewController: UIViewController {
         //드라이브를 사용하면 브레이크포인트 한 번만 잡힘 -> 스트림을 공유하기때문
         let testA = stepButton.rx.tap
             .map { "하위" }
-//            .share()
             .asDriver(onErrorJustReturn: "") //drive쓸 수 있는 객체로 바뀜
         
         testA
-//            .bind(to: validationLabel.rx.text)
             .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
         
         testA
-//            .bind(to: nameTextField.rx.text)
             .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
         
         testA
-//            .bind(to: stepButton.rx.title())
             .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
         

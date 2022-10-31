@@ -99,6 +99,7 @@ class SubjectViewController: UIViewController {
         searchBar.rx.text.orEmpty
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] value in
+                print("123")
                 self?.viewModel.filterData(query: value)
             })
             .disposed(by: disposeBag)
