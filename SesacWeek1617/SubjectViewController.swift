@@ -35,9 +35,17 @@ class SubjectViewController: UIViewController {
         //        asyncSubject()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
-//
-        viewModel.list
-            .bind(to: tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) { (row, element, cell) in
+        
+        
+        let input = SubjectViewModel.Input(addTap: addButton.rx.tap, resetTap: resetButton.rx.tap, newTap: newButton.rx.tap, searchText: searchBar.rx.text)
+        
+        let output = viewModel.transform(input: input)
+        
+        
+//        viewModel.list
+//            .asDriver(onErrorJustReturn: [])
+        output.list
+            .drive(tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) { (row, element, cell) in
                 cell.textLabel?.text = "\(element.name), \(element.age), \(element.number)"
             }
             .disposed(by: disposeBag)
@@ -56,7 +64,8 @@ class SubjectViewController: UIViewController {
         //            }
         //            .disposed(by: disposeBag)
         
-        addButton.rx.tap
+//        addButton.rx.tap
+        output.addTap
             .bind(onNext: { [weak self] _ in
                 self?.viewModel.fetchData()
             })
@@ -68,7 +77,10 @@ class SubjectViewController: UIViewController {
         //                vc.viewModel.resetData()
         //            }
         //            .disposed(by: disposeBag)
-        resetButton.rx.tap
+        
+        
+//        resetButton.rx.tap
+        output.resetTap
             .bind(onNext: { [weak self] _ in
                 self?.viewModel.resetData()
             })
@@ -79,7 +91,10 @@ class SubjectViewController: UIViewController {
         //                self?.viewModel.newData()
         //            }
         //            .disposed(by: disposeBag)
-        newButton.rx.tap
+        
+        
+//        newButton.rx.tap //VC -> VM( input) 탭같은건 인풋
+        output.newTap
             .bind(onNext: { [weak self] _ in
                 self?.viewModel.newData()
             })
@@ -96,8 +111,13 @@ class SubjectViewController: UIViewController {
         //                vc.viewModel.filterData(query: value)
         //            }
         //            .disposed(by: disposeBag)
-        searchBar.rx.text.orEmpty
-            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+        
+        
+        
+//        searchBar.rx.text.orEmpty //VC -> VM
+//            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+//            .distinctUntilChanged()
+        output.searchText
             .bind(onNext: { [weak self] value in
                 print("123")
                 self?.viewModel.filterData(query: value)

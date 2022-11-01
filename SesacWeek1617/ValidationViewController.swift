@@ -28,30 +28,49 @@ class ValidationViewController: UIViewController {
     
     private func bind() {
 
-        viewModel.validText
-            .asDriver()
+        //MARK: After
+        //MARK: 데이터를 처리하기 위해 뷰모델에서 데이터를 한번에 넘김
+        let input = ValidationViewModel.Input(text: nameTextField.rx.text, tap: stepButton.rx.tap) //구조체 타입을 바로 가지고오기위해 ValidationViewModel에 바로 접근
+        let output = viewModel.transform(input: input)
+    
+        //바로 아래 코드를 수정한거
+        output.text
             .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
+//
+//        viewModel.validText //뷰모델에서 내용을 꺼내온거기때문ㅌ에 아웃풋
+//            .asDriver() //여기까지 진행되면 타입이 Driver<String>
+//            .drive(validationLabel.rx.text)
+//            .disposed(by: disposeBag)
+//
+        
         
         //validation 두번실행됨. 각각 시퀀스가 실행됨. 네트워킹같은거는 문제가 생길 수 있음. 불필요한 리소스낭비
-        let validation = nameTextField.rx.text
+        //MARK: before
+        let validation = nameTextField.rx.text //직접적으로 뷰모델에 들어가있진않지만 데이터를 핸들링하고있음. 아웃풋이 명확하지 않은거는 대부분 인풋 즉 인풋
             .orEmpty
             .map { $0.count >= 8 }
             .share() // Subject, Relay 내부적으로. 그래서 Subject랑 Relay쓸때 share따로 쓰는거아님. 실제로 썼을때랑 안썼을때랑 브레이크포인트 잡아놓고 보면 차이남 => 빼고 드라이브 써도됨
 
-       validation
+        //MARK: 인풋이ㅏ웃풋 이용
+//
+//       validation
+//            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
+//            .disposed(by: disposeBag)
+//
+        output.validation
             .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
             .disposed(by: disposeBag)
 
         //컬러는 bindto못쓸거임
-        validation
+        output.validation
             .bind(onNext: { [weak self] value in
                 let color: UIColor = value ? .systemPink : .lightGray
                 self?.stepButton.backgroundColor = color
             })
             .disposed(by: disposeBag)
 
-        stepButton.rx.tap
+        output.tap //인풋
             .bind { _ in
                 print("show alert")
             }

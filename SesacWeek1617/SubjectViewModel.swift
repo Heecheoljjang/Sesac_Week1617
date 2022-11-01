@@ -9,13 +9,44 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+//associated type -> 제네릭과 유사함.
+protocol CommonViewModel {
+    
+    //뷰모델마다 다 구조가 다르기때문에 associatedtype으로 해야됨
+    associatedtype Input
+    associatedtype Output
+    
+    func transform(input: Input) -> Output
+}
+
+protocol Test {
+    
+    associatedtype TestA: Codable
+    associatedtype TestB: Codable
+}
+
+class bvm: CommonViewModel {
+    
+    func transform(input: Input) -> Output {
+        <#code#>
+    }
+    
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
+}
+
 struct Contact {
     var name: String
     var age: Int
     var number: String
 }
 
-class SubjectViewModel {
+class SubjectViewModel: CommonViewModel {
     
     var contactData = [
         Contact(name: "aaaa", age: 11, number: "123123213"),
@@ -54,4 +85,28 @@ class SubjectViewModel {
         }
         
     }
+    
+    struct Input {
+        let addTap: ControlEvent<Void>
+        let resetTap: ControlEvent<Void>
+        let newTap: ControlEvent<Void>
+        let searchText: ControlProperty<String?>
+    }
+    
+    struct Output {
+        let addTap: ControlEvent<Void>
+        let resetTap: ControlEvent<Void>
+        let newTap: ControlEvent<Void>
+        let list: Driver<[Contact]>
+        let searchText: Observable<String>
+    }
+    
+    func transform(input: Input) -> Output {
+        let list = list.asDriver(onErrorJustReturn: [])
+        let text = input.searchText.orEmpty.debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+        
+        return Output(addTap: input.addTap, resetTap: input.resetTap, newTap: input.newTap, list: list, searchText: text)
+    }
+    
 }
